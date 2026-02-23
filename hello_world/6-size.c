@@ -7,7 +7,6 @@
  */
 int main(void)
 {
-	printf("with proper grammar, but the outcome is a piece of art,\n");
 	printf("Size of a char: %zu byte(s)", sizeof(char));
 	printf("Size of an int: %zu byte(s)", sizeof(int));
 	printf("Size of a long int: %zu byte(s)", sizeof(long int));
