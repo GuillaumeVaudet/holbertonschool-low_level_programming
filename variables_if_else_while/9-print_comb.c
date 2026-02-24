@@ -11,6 +11,7 @@ int main(void)
 
 	/* Expected Output Result 0, 1, 2, 3, 4, 5, 6, 7, 8, 9*/
 	int n;
+
 	n = '0';
 
 	while (n <= '9')
