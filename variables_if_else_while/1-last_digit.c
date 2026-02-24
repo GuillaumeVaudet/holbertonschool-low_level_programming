@@ -25,7 +25,7 @@ int main(void)
 	{
 		printf(" of %d is %i and is 0\n", n, last_digit);
 	}
-	elif(last_digit < 6)
+	else if(last_digit < 6)
 	{
 		printf(" of %d is %i and is less than 6 and not 0\n", n, last_digit);
 	}
