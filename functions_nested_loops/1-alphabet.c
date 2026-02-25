@@ -4,7 +4,7 @@
 * print_alphabet - Print alphabet in lowercase
 * using _putchar
 *
-* Return: Always 0 (Sucess)
+* Return: 1 for success and -1 for error cf. _putchar
 */
 
 void print_alphabet(void)
