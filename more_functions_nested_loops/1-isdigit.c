@@ -1,5 +1,5 @@
 /**
-* _isdigie - check if a char is upper or not
+* _isdigit - check if a char is upper or not
 * @c: item to test
 * Return: 1 if c is updigitper and 0 if not
 */
