@@ -8,32 +8,24 @@ int _atoi(char *s)
 {
 	int i = 0;
 	int sign = 1;
-	int dest = 0;
+	unsigned int dest = 0;
 	int started = 0;
 
 	while (s[i] != '\0')
 	{
-		while (s[i] == ' ' || s[i] == '\t' || s[i] == '\v' || s[i] == '\n'
-		|| s[i] == '\f' || s[i] == '\r')
-		{
-			i++;
-		}
 
-		while (s[i] == '+' || s[i] == '-')
-		{
-			if (s[i] == '-')
-				sign *= -1;
-			i++;
-		}
-		while (s[i] >= '0' && s[i] <= '9')
+		if (!started && s[i] == '-')
+			sign *= -1;
+
+		if (s[i] >= '0' && s[i] <= '9')
 		{
 			started = 1;
 			dest = dest * 10 + (s[i] - '0');
-			i++;
+		} else if (started)
+		{
+			break;
 		}
-		if (started)
-			return (dest * sign);
 		i++;
 	}
-	return (0);
+	return ((int)dest * sign);
 }
