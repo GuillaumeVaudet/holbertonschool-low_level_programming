@@ -1,0 +1,1 @@
+# Antoher dir to practice memory management with malloc, free, alloc realloc
