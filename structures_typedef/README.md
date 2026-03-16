@@ -1,0 +1,1 @@
+# This is the directory to push all exercices about structs and typedef
