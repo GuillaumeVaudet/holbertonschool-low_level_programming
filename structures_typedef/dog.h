@@ -7,12 +7,12 @@
 * @age: integer - used for dog's age
 * @owner: string - used for the dog's owner name
 */
-struct dog
+typedef struct dog
 {
 	char *name;
 	float age;
 	char *owner;
-};
+} dog_t;
 
 void init_dog(struct dog *d, char *name, float age, char *owner);
 void print_dog(struct dog *d);
