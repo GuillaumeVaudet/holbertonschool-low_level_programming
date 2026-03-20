@@ -7,7 +7,7 @@
 * @argc: int - args counter
 * @argv:  array of string - pointer of pointer
 * Return: 0 (successful) - 98 (wrong number of args) - 99 (wrong operator) -
-* 100 (if user want to divide or use modulo with 0)
+* 100 (user want to divide or use modulo with 0)
 */
 int main(int argc, char **argv)
 {
