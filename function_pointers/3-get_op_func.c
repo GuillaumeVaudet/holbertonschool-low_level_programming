@@ -9,8 +9,6 @@
 
 int (*get_op_func(char *s))(int, int)
 {
-	int comp;
-
 	op_t ops[] = {
 			{"+", op_add},
 			{"-", op_sub},
@@ -23,8 +21,8 @@ int (*get_op_func(char *s))(int, int)
 
 	while (ops[i].op != NULL)
 	{
-		comp = strcmp(s, ops[i].op);
-		if (comp == 0)
+	
+		if (strcmp(s, ops[i].op) == 0)
 		{
 			return (ops[i].f);
 		}
