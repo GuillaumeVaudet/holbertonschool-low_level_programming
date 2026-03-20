@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	}
 
 	operator = argv[2];
-		
+
 	f = get_op_func(operator);
 	if (f == NULL)
 	{
