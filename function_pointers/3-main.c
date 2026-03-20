@@ -1,0 +1,44 @@
+#include "3-calc.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+/**
+* main - entry point
+* @argc: int - args counter
+* @argv:  array of string - pointer of pointer
+* Return: 0 (successful) - 98 (wrong number of args) - 99 (wrong operator) -
+* 100 (if user want to divide or use modulo with 0)
+*/
+int main(int argc, char **argv)
+{
+	int num1, num2;
+	char *operator;
+	int (*f)(int, int);
+
+	if (argc != 4)
+	{
+		printf("Error\n");
+		exit(98);
+	}
+
+	num1 = atoi(argv[1]);
+	num2 = atoi(argv[3]);
+	operator = argv[2];
+
+
+	f = get_op_func(operator);
+	if (f == NULL)
+	{
+		printf("Error\n");
+		exit(99);
+	}
+
+	if (num2 == 0 && (strcmp(operator, "/") == 0 || strcmp(operator, "%") == 0))
+	{
+		printf("Error\n");
+		exit(100);
+	}
+
+	printf("%d\n", f(num1, num2));
+	return (0);
+}
