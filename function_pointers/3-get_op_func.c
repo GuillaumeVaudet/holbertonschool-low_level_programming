@@ -23,7 +23,7 @@ int (*get_op_func(char *s))(int, int)
 
 	while (ops[i].op != NULL)
 	{
-		comp = strcmp(ops[i].op, s);
+		comp = strcmp(s, ops[i].op);
 		if (comp == 0)
 		{
 			return (ops[i].f);
