@@ -1,0 +1,1 @@
+# Directory to learn all things about variadic functions
