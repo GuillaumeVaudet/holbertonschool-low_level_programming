@@ -54,8 +54,9 @@ void print_string(va_list args)
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	int i, j, first;
+	int i, j;
 	char indicator;
+	char *separator;
 
 	print_element array_of_struct[4] = {
 		{'c', print_char},
@@ -63,9 +64,8 @@ void print_all(const char * const format, ...)
 		{'f', print_float},
 		{'s', print_string},
 	};
-
+	separator = "";
 	i = 0;
-	first = 0;
 	va_start(args, format);
 	while (format != NULL && format[i] != '\0')
 	{
@@ -76,10 +76,9 @@ void print_all(const char * const format, ...)
 		{
 			if (indicator == array_of_struct[j].id)
 			{
-				if (first == 1)
-					printf(", ");
+				printf("%s", separator);
 				array_of_struct[j].f(args);
-				first = 1;
+				separator = ", ";
 			}
 			j++;
 		}
