@@ -1,48 +1,51 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "variadic_functions.h"
+
 /**
-* _print_char - print a char
-* @args: va_list
+* print_char - print a char
+* @args: char - char to print
 * Return: void
 */
-void _print_char(va_list args)
+void print_char(va_list args)
 {
 	printf("%c", va_arg(args, int));
 }
+
 /**
-* _print_int - print an integer
-* @args: va_list
+* print_int - print an int
+* @args: int - int to print
 * Return: void
 */
-void _print_int(va_list args)
+void print_int(va_list args)
 {
-	printf("%d", va_arg(args, int));
+	printf("%i", va_arg(args, int));
 }
 /**
-* _print_float - print a float
-* @args: va_list
+* print_float - print a float
+* @args: float - float to print
 * Return: void
 */
-void _print_float(va_list args)
+void print_float(va_list args)
 {
 	printf("%f", va_arg(args, double));
 }
 /**
-* _print_string - print a string
-* @args: va_list
+* print_string - print a string
+* @args: string - string to print
 * Return: void
 */
-void _print_string(va_list args)
+void print_string(va_list args)
 {
 	char *s = va_arg(args, char *);
 
 	if (s == NULL)
+	{
 		printf("(nil)");
-	else
-		printf("%s", s);
+		return;
+	}
+	printf("%s", s);
 }
-
 /**
  * print_all - print all that pass in args
  * @format: string - could be c, i, f, s
@@ -51,29 +54,31 @@ void _print_string(va_list args)
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	unsigned int i;
-	unsigned int j;
-	int first;
-	print_element types[] = {
-		{'c', _print_char},
-		{'i', _print_int},
-		{'f', _print_float},
-		{'s', _print_string}
+	int i, j, first;
+	char indicator;
+
+	print_element array_of_struct[4] = {
+		{'c', print_char},
+		{'i', print_int},
+		{'f', print_float},
+		{'s', print_string},
 	};
 
 	i = 0;
 	first = 0;
 	va_start(args, format);
-	while (format && format[i])
+	while (format[i] != '\0')
 	{
+		indicator = format[i];
 		j = 0;
+
 		while (j < 4)
 		{
-			if (format[i] == types[j].id)
+			if (indicator == array_of_struct[j].id)
 			{
-				if (first)
+				if (first == 1)
 					printf(", ");
-				types[j].f(args);
+				array_of_struct[j].f(args);
 				first = 1;
 			}
 			j++;
