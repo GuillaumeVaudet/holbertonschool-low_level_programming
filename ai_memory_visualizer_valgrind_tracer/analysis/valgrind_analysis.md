@@ -25,10 +25,10 @@ We have 3 errors.
 **Invalid read of size 4**
 ### Memory Misuse Analysis
 This is a **aliasing and use-after-free**.
+
 - **The object**: The `b` pointer.
 - **The cause**: `b` points to the same address as `a` and used after `free(a)`.
 - **The result**: When the program try to write or read at the address pointed by `b` there is an issue. `b` become a dangling pointer. The memory at that address has been released back to the system. Accessing it through `b` is undefined behavior, the data may appear intact, be corrupted, or cause a crash depending on whether the memory has been reused.
-
 ### AI Critical Review
 AI response with issue: `This program will always crash with a segmentation fault when accessing `b[2]` after `free(a)`.`\
 This is an error because a `use-after-free` has an undefined behavior. It depend if the memory area has been re-used by the system.
