@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	fd_target = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_target == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 		close(fd_source);
 		exit(99);
 	}
@@ -67,11 +67,13 @@ int main(int argc, char **argv)
 	}
 	if (close(fd_source) == -1)
 	{
+		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_source);
 		exit(100);
 	}
 	if (close(fd_target) == -1)
 	{
+		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_target);
 		exit(100);
 	}
