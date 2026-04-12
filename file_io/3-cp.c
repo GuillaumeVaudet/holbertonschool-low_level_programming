@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <sys/stat.h>
 /**
  * main - entry point
  * @argc: int - nulber of args
@@ -29,6 +30,7 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
+	umask(0); /* reset umask to apply exact permissions on file creation */
 	fd_target = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_target == -1)
 	{
